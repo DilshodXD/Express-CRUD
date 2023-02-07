@@ -29,8 +29,8 @@ app.post('/api/categories', (req, res) => {
 
 app.put('/api/categories/:id', (req, res) => {
   const category = categories.filter(lesson => lesson.id === +req.params.id)
-  category.name = req.body.name
-
+  console.log(category.name);
+  category[0].name = req.body.name
   res.send(category).status(201)
 })
 
