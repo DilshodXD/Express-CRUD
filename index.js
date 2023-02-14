@@ -2,12 +2,14 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const categoriesRoute = require("./routes/categories");
+const customersRoute = require("./routes/customers");
 
 
 const app = express();
 app.use(express.json());
 app.use("/api/categories", categoriesRoute);
-// mongoose.set("useFindAndModify", false);
+app.use("/api/customers", customersRoute);
+
 mongoose.set('strictQuery', false);
 
 mongoose
@@ -19,6 +21,7 @@ mongoose
     console.log("mongo db connection on database");
   })
   .catch((err) => console.log(err));
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
